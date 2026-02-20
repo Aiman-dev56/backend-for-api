@@ -58,7 +58,7 @@ router.post("/register", upload.single("image"), async (req, res) => {
     console.log("✅ User created:", user.email);
 
     // Generate token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id.toString }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
