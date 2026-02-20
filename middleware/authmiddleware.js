@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+
+
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1];
@@ -7,12 +10,7 @@ module.exports = (req, res, next) => {
   }
 
   try {
-    // DEBUG: Check if secret exists
-    if (!process.env.JWT_SECRET) {
-      console.error("CRITICAL: JWT_SECRET is missing from .env");
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+   const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded.id; 
     next();
   } catch (error) {
