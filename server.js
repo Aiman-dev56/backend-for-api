@@ -11,7 +11,7 @@ connectDB();
 
 // 2. Fix: Multi-origin support (Local + Netlify)
 const allowedOrigins = [
-  "http://localhost:5174/" // Your local Vite/React port
+  "http://localhost:5174" // Your local Vite/React port
   
 ];
 
