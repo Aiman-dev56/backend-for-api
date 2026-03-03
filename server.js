@@ -2,12 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const { connectRedis } = require("./config/redis");
 
 // 1. Fix: Correct Port Priority
 const PORT = process.env.PORT || 5000; 
 
 const app = express();
 connectDB();
+
+connectRedis();
 
 // 2. Fix: Multi-origin support (Local + Netlify)
 const allowedOrigins = [
